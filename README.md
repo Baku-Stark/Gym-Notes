@@ -1,2 +1,15 @@
+<div align="center">
+
 # Gym-Notes
-⚛️ | React Project
+
+`⚛️ | React Project`
+
+⚛️ Update: `Gym Notes`
+
+</div>
+
+<div align="center">
+
+# 
+
+</div>

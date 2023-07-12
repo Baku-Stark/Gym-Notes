@@ -1,0 +1,141 @@
+@import 'variables';
+
+.main_title{
+    font-size: 1em;
+    color: var(--letter-color);
+    font-family: 'MaidenCrimes';
+}
+
+.link_item_navbar a, .link_item_sidebar a{
+    font-size: 1.4em;
+    text-decoration: none;
+    color: var(--03);
+
+    &:hover{
+        transition: .5s ease-in-out;
+        color: var(--light-color-theme);
+    }
+}
+
+header{
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    background-color: var(--dark-background);
+
+    nav{
+        display: grid;
+        @include GridLayout-Columns(repeat(3, 1fr));
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar_title_container{
+            text-align: center;
+
+            a{
+                text-decoration: none;
+    
+                &:hover{
+                    transition: .5s ease-in-out;
+                    color: var(--color-theme);
+                }
+            }
+        }
+
+        .navbar_image_container img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .navbar_link_container{            
+            .link_list_navbar{
+                display: flex;
+                list-style: none;
+
+                .link_item_navbar{
+                    margin-left: 5vh;
+
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        .navbar_sidebar_container{
+            display: none;
+        }
+
+        @include screenTablet{
+            @include GridLayout-Columns(repeat(2, 1fr));
+
+            .navbar_link_container{
+                display: none;
+            }
+
+            .navbar_sidebar_container{
+                top: 0;
+                left: 0;
+                width: 35%;
+                z-index: 10;
+                height: 100vh;
+                padding: 10px;
+                position: fixed;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-shadow: 100px 1px 100px #00000079;
+                background-color: var(--dark-background);
+
+                .sidebar_title{
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+
+                    button{
+                        padding: 10px;
+                    }
+                }
+
+                .link_list_sidebar{
+                    width: 100%;
+                    height: inherit;
+                    display: flex;
+                    list-style: none;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+
+                    .link_item_sidebar{
+                        padding: 10px;
+                        border-radius: 5px;
+                        margin-left: 0 !important;
+                        background-color: var(--01);
+
+                        i{
+                            font-size: 1.2em;
+                            margin-right: 1vw;
+                            color: var(--03);
+                        }
+
+                        &:hover{
+                            transition: .3s ease-in-out;
+                            background-color: var(--light-background);
+
+                            a{
+                                transition: .3s ease-in-out;
+                                margin-left: 2vw;
+                            }
+                        }
+                    }
+                }
+
+                @include screenPhone{
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
