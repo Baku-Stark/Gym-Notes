@@ -1,0 +1,55 @@
+@import 'variables';
+
+.top_container, .bot_container{
+    padding: 1em;
+}
+
+.login_container{
+    border-radius: 20px;
+    background-color: var(--dark-background);
+
+    .top_container{
+        text-align: center;
+        border-bottom: 2px solid #000000;
+
+        h3{
+            color: var(--letter-color);
+        }
+    }
+
+    .bot_container form div{
+        padding: 1em;
+        margin-bottom: 10px;
+        @include flexAlignI-JC(center, center);
+
+        i{
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: var(--letter-color);
+        }
+
+        .user, .password{
+            padding: .5em;
+            border: none;
+            font-weight: bold;
+            color: var(--letter-color);
+            background: var(--dark-background);
+
+            &::placeholder{
+                opacity: .5;
+                font-weight: bold;
+                color: var(--03);
+            }
+
+            &:focus{
+                outline: none;
+                transition: .2s ease-in-out;
+                border-bottom: 1px solid var(--letter-color);
+            }
+        }
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}

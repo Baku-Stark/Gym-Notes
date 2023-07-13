@@ -18,6 +18,9 @@ export function Navbar(){
                 </div>
                 <div className={styles.navbar_image_container}>
                     <img src={personal} alt="LOGOTIPO" />
+                    <button className={styles.button_bar}>
+                        <i className={"bi bi-list"}></i>
+                    </button>
                 </div>
 
                 {/* ===== NAVBAR LINKS ===== */}
@@ -32,6 +35,10 @@ export function Navbar(){
                         <li className={styles.link_item_navbar}>
                             <Link to={"/about/"}>About</Link>
                         </li>
+                        <li className={styles.link_item_navbar}>
+                            <Link to={"/sign_in/"}>Login</Link>
+                        </li>
+                        <Link to={"/sign_up/"} className={`${styles.link_item_navbar} ${styles.register}`}>Register</Link>
                     </ul>
                 </div>
                 {/* ===== END OF NAVBAR LINKS ===== */}
@@ -40,7 +47,9 @@ export function Navbar(){
                 <div className={styles.navbar_sidebar_container}>
                     <div className={styles.sidebar_title}>
                         <h1 className={styles.main_title}>Gym Notes Project</h1>
-                        <button>X</button>
+                        <button className={styles.button_bar}>
+                            <i className={"bi bi-x-lg"}></i>
+                        </button>
                     </div>
                     <ul className={styles.link_list_sidebar}>
                         <li className={styles.link_item_sidebar}>
@@ -57,6 +66,13 @@ export function Navbar(){
                             <i className={"bi bi-list-ul"}></i>
                             <Link to={"/about/"}>About</Link>
                         </li>
+
+                        {/* LOGIN | REGISTER */}
+                        <li className={styles.link_item_sidebar}>
+                            <i className={"bi bi-list-ul"}></i>
+                            <Link to={"/sign_in/"}>Login</Link>
+                        </li>
+                        <Link to={"/sign_up/"} className={styles.link_item_sidebar_register}>Register</Link>
                     </ul>
                 </div>
                 {/* ===== END OF SIDEBAR ===== */}

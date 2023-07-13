@@ -1,4 +1,5 @@
-@import 'variables', '_navbar.scss';
+@import 'variables',
+        '_navbar.scss', 'signin';
 
 *{
     margin: 0;
@@ -13,5 +14,7 @@ body{
 
 section{
     width: 100%;
-    padding: 10px;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    @include flexAlignI-JC(center, center);
 }
