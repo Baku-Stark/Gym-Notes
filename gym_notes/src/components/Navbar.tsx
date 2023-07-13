@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 
-
 // IMAGES
 import personal from '../assets/img/personal_trainer.svg'
 

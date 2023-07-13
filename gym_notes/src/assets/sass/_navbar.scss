@@ -7,7 +7,6 @@
 }
 
 .link_item_navbar a, .link_item_sidebar a{
-    font-size: 1.4em;
     text-decoration: none;
     color: var(--03);
 
@@ -56,6 +55,7 @@ header{
                 list-style: none;
 
                 .link_item_navbar{
+                    font-size: 1.2em;
                     margin-left: 5vh;
 
                     &:first-child{
@@ -110,6 +110,7 @@ header{
 
                     .link_item_sidebar{
                         padding: 10px;
+                        font-size: 1.4em;
                         border-radius: 5px;
                         margin-left: 0 !important;
                         background-color: var(--01);
