@@ -1,12 +1,28 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async"
 
 // CSS PRINCIPAL
 import styles from '../../../assets/css/output.module.css'
 
 export function SignIn(){
+    const [login, setLogin] = useState({"user": '', "password": ''})
+
+    function handleChange(e:any){
+        setLogin({
+            ...login,
+            [e.target.name]: e.target.value
+        })
+    }
+    
     function login_authentic(e:any){
         e.preventDefault()
+        console.log(login)
+
+        // limpar valores dos inputs
+        e.target.reset()
     }
+
     return(
         <>
             <Helmet>
@@ -14,7 +30,7 @@ export function SignIn(){
             </Helmet>
             <div className={styles.login_container}>
                 <div className={styles.top_container}>
-                    <h3>Login</h3>
+                    <h3>LOGIN</h3>
                 </div>
                 <div className={styles.bot_container}>
                     <form
@@ -28,20 +44,30 @@ export function SignIn(){
                                 type="text"
                                 name="user"
                                 id="user"
-                                className={styles.user}
                                 placeholder="Type your username"
+                                className={styles.user}
+                                onChange={handleChange}
+                                required
                             />
                         </div>
                         <div className={styles.form_block}>
                             <i className={"bi bi-shield-lock-fill"}></i>
                             <input
-                                type="password" name="password" id="password"
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Type your password"
                                 className={styles.password}
-                                placeholder="Type Password"
+                                onChange={handleChange}
+                                required
                             />
                         </div>
                         <div className={styles.form_block}>
                             <input type="submit" value="LOGIN" />
+                        </div>
+                        <div className={styles.link_block}>
+                            <Link to={"/sign_up"}>I don't have an account</Link>
+                            <Link to={"/forg_pass"}>I forgot my password</Link>
                         </div>
                     </form>
                 </div>

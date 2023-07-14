@@ -83,7 +83,7 @@ header{
                     }
                 }
                 
-                .register{
+                .login{
                     padding: 10px;
                     border-radius: 10px;
                     text-decoration: none;
@@ -150,7 +150,7 @@ header{
                     flex-direction: column;
                     justify-content: space-evenly;
 
-                    .link_item_sidebar, .link_item_sidebar_register{
+                    .link_item_sidebar, .link_item_sidebar_login{
                         padding: 10px;
                         font-size: 1.4em;
                         border-radius: 5px;
@@ -180,7 +180,7 @@ header{
                         }
                     }
 
-                    .link_item_sidebar_register{
+                    .link_item_sidebar_login{
                         text-decoration: none;
                         justify-content: center;
                         color: var(--03);

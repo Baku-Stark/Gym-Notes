@@ -8,7 +8,7 @@
     padding: .8em;
 }
 
-.login_container{
+.register_container{
     border-radius: 20px;
     background-color: var(--dark-background);
 
@@ -22,7 +22,7 @@
     }
 
     .bot_container form{
-        .form_block{
+        .form_block, .form_block_2{
             margin-bottom: 10px;
             @include flexAlignI-JC(center, center);
     
@@ -32,7 +32,7 @@
                 color: var(--letter-color);
             }
     
-            .user, .password{
+            .user, .password, .email{
                 padding: .5em;
                 border: none;
                 font-weight: bold;
@@ -55,6 +55,7 @@
             input[type="submit"]{
                 width: 70%;
                 padding: 8px 0;
+                letter-spacing: 2px;
                 border: none;
                 color: var(--letter-color);
                 background: var(--light-background);
@@ -62,12 +63,25 @@
 
                 &:hover{
                     cursor: pointer;
+                    letter-spacing: 1px;
                     transition: .2s ease-in-out;
                     background-color: #000000;
                 }
 
                 @include screenPORTRAIT{
                     width: 100%;
+                }
+            }
+        }
+
+        .form_block_2{
+            flex-direction: column;
+
+            div{
+                margin-bottom: 10px;
+
+                &:last-child{
+                    margin-bottom: 0;
                 }
             }
         }

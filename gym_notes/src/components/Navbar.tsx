@@ -35,10 +35,7 @@ export function Navbar(){
                         <li className={styles.link_item_navbar}>
                             <Link to={"/about/"}>About</Link>
                         </li>
-                        <li className={styles.link_item_navbar}>
-                            <Link to={"/sign_in/"}>Login</Link>
-                        </li>
-                        <Link to={"/sign_up/"} className={`${styles.link_item_navbar} ${styles.register}`}>Register</Link>
+                        <Link to={"/sign_in/"} className={`${styles.link_item_navbar} ${styles.login}`}>Login</Link>
                     </ul>
                 </div>
                 {/* ===== END OF NAVBAR LINKS ===== */}
@@ -68,11 +65,7 @@ export function Navbar(){
                         </li>
 
                         {/* LOGIN | REGISTER */}
-                        <li className={styles.link_item_sidebar}>
-                            <i className={"bi bi-list-ul"}></i>
-                            <Link to={"/sign_in/"}>Login</Link>
-                        </li>
-                        <Link to={"/sign_up/"} className={styles.link_item_sidebar_register}>Register</Link>
+                        <Link to={"/sign_in/"} className={styles.link_item_sidebar_login}>Login</Link>
                     </ul>
                 </div>
                 {/* ===== END OF SIDEBAR ===== */}
