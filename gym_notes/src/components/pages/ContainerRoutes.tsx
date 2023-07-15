@@ -8,6 +8,7 @@ import { About } from './About'
 // PAGES [ACCOUNTS]
 import { SignIn } from './Account/SignIn'
 import { SignUp } from './Account/SignUp'
+import { CreateNote } from './CreateNote'
 
 export function ContainerRoutes(){
     return(
@@ -19,6 +20,7 @@ export function ContainerRoutes(){
                 <Route path={"/about"} element={<About/>}></Route>
                 <Route path={"/sign_in"} element={<SignIn/>}></Route>
                 <Route path={"/sign_up"} element={<SignUp/>}></Route>
+                <Route path={"/create_note"} element={<CreateNote/>}></Route>
             </Routes>
         </section>
     )

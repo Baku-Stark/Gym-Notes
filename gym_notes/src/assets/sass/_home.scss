@@ -1,0 +1,66 @@
+@import 'variables';
+
+.home_container{
+    @include GridLayout-Columns(repeat(1, 1fr));
+
+    .home_top_container{
+        margin-bottom: 5vh;
+        text-align: center;
+
+        img{
+            width: 400px;
+            height: 400px;
+            @include screenPhone{
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        h2{
+            color: var(--letter-color);
+            
+            span{
+                font-weight: bold;
+                animation: 3s color_channge infinite;
+            }
+        }
+    }
+
+    .home_bot_container{
+        text-align: center;
+
+        .redirect_button{
+            padding: 15px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: .3s ease-in-out;
+            color: var(--letter-color);
+            background-color: var(--dark-background);
+
+            i{
+                margin-left: 2vw;
+                font-weight: bold;
+            }
+
+            &:hover{
+                letter-spacing: 2px;
+                transition: .3s ease-in-out;
+                background-color: var(--01);
+
+                span, i{
+                    color: var(--color-theme);
+                }
+            }
+        }
+    }
+}
+
+@keyframes color_channge {
+    0%, 100%{
+        color: var(--color-theme);
+    }
+
+    50%{
+        color: #008b8b;
+    }
+}
