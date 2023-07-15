@@ -6,7 +6,7 @@ export function Home(){
             <Helmet>
                 <title>Gym Notes - Home Page</title>
             </Helmet>
-            <h1>Home</h1>
+            <h1>Home {"<Nome do usuário>"}</h1>
         </div>
     )
 }

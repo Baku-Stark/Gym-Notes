@@ -16,6 +16,7 @@ export function SignUp(){
     )
 
     function handleChange(e:any){
+        // create a json [form]
         setRegister({
             ...register,
             [e.target.name]: e.target.value

@@ -13,6 +13,10 @@
     i{
         color: var(--color-theme);
     }
+
+    &:hover{
+        background-color: var(--03);
+    }
 }
 
 .link_item_navbar a, .link_item_sidebar a{
@@ -29,9 +33,13 @@ header{
     nav{
         width: 100%;
         display: grid;
-        @include GridLayout-Columns(repeat(3, 1fr));
         border-bottom: 1px solid #000000;
         background-color: var(--dark-background);
+        @include GridLayout-Columns(repeat(3, 1fr));
+
+        @include screenTablet{
+            padding: 10px;
+        }
 
         div{
             display: flex;
@@ -112,7 +120,7 @@ header{
                 display: none;
             }
 
-            .navbar_sidebar_container{
+            .navbar_sidebar_container.active{
                 top: 0;
                 left: 0;
                 width: 35%;

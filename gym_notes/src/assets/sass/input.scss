@@ -1,6 +1,6 @@
 @import 'variables',
-        '_navbar.scss', 'signin',
-        'signup';
+        'navbar_sidebar', 'footer',
+        'signin', 'signup';
 
 *{
     margin: 0;
@@ -18,4 +18,11 @@ section{
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
     @include flexAlignI-JC(center, center);
+}
+
+.line{
+    opacity: .4;
+    height: 2px;
+    margin: 5vh 0;
+    background-color: var(--02);
 }

@@ -1,0 +1,103 @@
+@import 'variables';
+
+.footer_title_main{
+    opacity: .6;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--letter-color);
+    font-family: 'MaidenCrimes';
+}
+
+footer{
+    padding: 15px;
+    background-color: var(--dark-background);
+    @include GridLayout-Columns(repeat(1, 1fr));
+
+    .top_content_footer{
+        text-align: center;
+
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    .mid_content_footer{
+        @include GridLayout-Columns(repeat(3, 1fr));
+
+        .mid_blocks{
+            @include GridLayout-RowsColumns(.5fr 2fr, repeat(1, 1fr));
+
+            .mid_blocks_title{
+                text-align: center;
+            }
+
+            .mid_blocks_content{
+                display: flex;
+                place-items: center;
+                flex-direction: column;
+                justify-content: center;
+
+                .info_list, .contacts_list_icons{
+                    list-style: none;
+    
+                    li a{
+                        text-decoration: none;
+                        color: var(--letter-color);
+
+                        &:hover{
+                            color: var(--color-theme);
+                        }
+                    }
+                }
+
+                .info_list li{
+                    margin-bottom: 15px;
+                }
+    
+                .contacts_list_icons{
+                    display: flex;
+    
+                    li{
+                        margin-left: 4vw;
+                        font-size: 1.5em;
+    
+                        abbr{
+                            text-decoration: none;
+                        }
+    
+                        &:first-child{
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            @include screenTablet{
+                margin-bottom: 15px;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        @include screenTablet{
+            @include GridLayout-Columns(repeat(1, 1fr));
+        }
+    }
+
+    .bot_content_footer{
+        text-align: center;
+
+        p{
+            opacity: .6;
+            font-weight: bold;
+            color: var(--letter-color);
+
+            span{
+                color: var(--light-color-theme);
+            }
+        }
+    }
+}
