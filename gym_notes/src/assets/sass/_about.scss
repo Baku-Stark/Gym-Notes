@@ -1,0 +1,34 @@
+.about_container{
+    .about_top_container{
+        text-align: center;
+        margin-bottom: 5vh;
+    }
+
+    .about_bot_container{
+        text-align: center;
+
+        p{
+            margin-bottom: 3vh;
+            color: var(--letter-color);
+
+            span{
+                font-weight: bold;
+                color: var(--color-theme);
+            }
+
+            .about_link_button{
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-weight: bold;
+                text-decoration: none;
+                color: var(--letter-color);
+                background-color: var(--dark-background);
+
+                &:hover{
+                    color: var(--dark-background);
+                    background-color: var(--letter-color);
+                }
+            }
+        }
+    }
+}

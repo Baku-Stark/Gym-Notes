@@ -8,6 +8,8 @@ export function Footer(){
             <div className={styles.top_content_footer}>
                 <h4 className={styles.footer_title_main}>Created by</h4>
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
             </div>
             <div className={styles.line}></div>
             <div className={styles.mid_content_footer}>
@@ -48,17 +50,17 @@ export function Footer(){
                     <div className={styles.mid_blocks_content}>
                         <ul className={styles.info_list}>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://github.com/Baku-Stark/Portfolio-Projects"} target="_blank">
                                     Portfolio Projects
                                 </Link>
                             </li>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://angpokedex-project.netlify.app/"} target="_blank">
                                     Pokédex
                                 </Link>
                             </li>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://github.com/Baku-Stark/Star-Wars-Project"} target="_blank">
                                     Star Wars Movies
                                 </Link>
                             </li>
@@ -72,17 +74,17 @@ export function Footer(){
                     <div className={styles.mid_blocks_content}>
                         <ul className={styles.info_list}>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://react.dev/"} target="_blank">
                                     React
                                 </Link>
                             </li>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://reactrouter.com/en/main"} target="_blank">
                                     React-Router-Dom
                                 </Link>
                             </li>
                             <li>
-                                <Link to={""} target="_blank">
+                                <Link to={"https://fastapi.tiangolo.com/"} target="_blank">
                                     Fast Api
                                 </Link>
                             </li>

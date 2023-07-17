@@ -1,7 +1,7 @@
 @import 'variables',
         'navbar_sidebar', 'footer',
         'signin', 'signup',
-        'home';
+        'home', 'about', 'contacts';
 
 *{
     margin: 0;
@@ -21,9 +21,22 @@ section{
     @include flexAlignI-JC(center, center);
 }
 
+.page_title{
+    font-size: 4.1em;
+    color: var(--03);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .line{
     opacity: .4;
     height: 2px;
     margin: 5vh 0;
+    background-color: var(--02);
+}
+
+.line_card{
+    opacity: .4;
+    height: 2px;
+    margin: 2vh 0;
     background-color: var(--02);
 }
