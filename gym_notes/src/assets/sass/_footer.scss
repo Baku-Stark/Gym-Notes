@@ -15,15 +15,12 @@ footer{
 
     .top_content_footer{
         text-align: center;
+        @include flexFlexDir-JC(column, center);
 
         img{
             width: 30px;
             height: 30px;
-            margin-left: 15px;
-
-            &:first-child{
-                margin-left: 0;
-            }
+            margin-bottom: 15px;
         }
     }
 

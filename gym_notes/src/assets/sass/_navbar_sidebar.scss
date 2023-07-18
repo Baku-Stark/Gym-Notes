@@ -121,17 +121,24 @@ header{
             }
 
             .navbar_sidebar_container.active{
+                transform: translateX(0);
+                transition: .2s ease-in-out;
+                box-shadow: 100px 1px 100px #00000079;
+            }
+
+            .navbar_sidebar_container{
                 top: 0;
                 left: 0;
                 width: 35%;
                 z-index: 10;
                 height: 100vh;
                 padding: 10px;
+                transform: translateX(-100%);
                 display: flex;
                 position: fixed;
                 flex-direction: column;
                 justify-content: space-between;
-                box-shadow: 100px 1px 100px #00000079;
+                transition: .2s ease-in-out;
                 background-color: var(--dark-background);
 
                 .sidebar_title{

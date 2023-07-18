@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 // IMAGES
@@ -8,6 +9,16 @@ import styles from '../assets/css/output.module.css'
 
 export function Navbar(){
     const user = "wallace"
+    const sidebar = useRef()
+
+    function closeSideBar(){
+        sidebar.current.classList.remove(`${styles.active}`)
+    }
+
+    function openSideBar(){
+        sidebar.current.classList.add(`${styles.active}`)
+    }
+
     return(
         <header>
             <nav>
@@ -18,7 +29,11 @@ export function Navbar(){
                 </div>
                 <div className={styles.navbar_image_container}>
                     <img src={personal} alt="LOGOTIPO" />
-                    <button className={styles.button_bar}>
+                    <button
+                        id={"button_open"}
+                        className={styles.button_bar}
+                        onClick={openSideBar}
+                    >
                         <i className={"bi bi-list"}></i>
                     </button>
                 </div>
@@ -41,10 +56,14 @@ export function Navbar(){
                 {/* ===== END OF NAVBAR LINKS ===== */}
 
                 {/* ===== SIDEBAR ===== */}
-                <div className={styles.navbar_sidebar_container}>
+                <div ref={sidebar} className={`${styles.navbar_sidebar_container} ${styles.active}`}>
                     <div className={styles.sidebar_title}>
                         <h1 className={styles.main_title}>Gym Notes Project</h1>
-                        <button className={styles.button_bar}>
+                        <button
+                            id={"button_close"}
+                            className={styles.button_bar}
+                            onClick={closeSideBar}
+                        >
                             <i className={"bi bi-x-lg"}></i>
                         </button>
                     </div>
