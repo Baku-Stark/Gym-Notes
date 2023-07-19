@@ -17,7 +17,7 @@ export function Contacts(){
                 <title>Gym Notes - Contacts</title>
             </Helmet>
             <div className={styles.contacts_container}>
-                <div className={styles.contacts_top_container}>
+                <div className={styles.page_top_container}>
                     <h2 className={styles.page_title}>Support</h2>
                 </div>
                 <div className={styles.contacts_bot_container}>

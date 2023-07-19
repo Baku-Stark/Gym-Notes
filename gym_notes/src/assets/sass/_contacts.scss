@@ -7,12 +7,6 @@
 }
 
 .contacts_container{
-
-    .contacts_top_container{
-        text-align: center;
-        margin-bottom: 10vh;
-    }
-
     .contacts_bot_container{
         @include GridLayout-Columns(repeat(2, .3fr));
         justify-content: center;

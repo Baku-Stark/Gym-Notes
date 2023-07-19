@@ -1,0 +1,150 @@
+@import 'variables';
+
+.login_container, 
+.register_container,
+.create_note_container{
+    border-radius: 20px;
+    background-color: var(--dark-background);
+
+    .top_container, .bot_container{
+        padding: 1em;
+    }
+
+    .top_container{
+        text-align: center;
+        border-bottom: 2px solid #000000;
+
+        h3{
+            color: var(--letter-color);
+        }
+    }
+}
+
+
+form{
+    .form_block, .form_block_2{
+        margin-bottom: 10px;
+        @include flexAlignI-JC(center, center);
+
+        i, label{
+            font-size: 1.2em;
+            margin-right: 10px;
+            color: var(--letter-color);
+        }
+
+        label{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .user, .password, .email,
+        .new_note_title{
+            padding: .5em;
+            border: none;
+            font-weight: bold;
+            color: var(--letter-color);
+            background: var(--dark-background);
+
+            
+            &:focus{
+                outline: none;
+                transition: .2s ease-in-out;
+                border-bottom: 1px solid var(--letter-color);
+            }
+
+            &::placeholder{
+                opacity: .5;
+                font-weight: bold;
+                color: var(--03);
+            }
+        }
+
+        textarea{
+            padding: .5em;
+            font-size: .8em;
+            width: 100%;
+            height: 113px;
+            min-width: 300px;
+            max-width: 330px;
+            min-height: 120px;
+            max-height: 140px;
+            border: none;
+            font-weight: bold;
+            color: var(--letter-color);
+            background: var(--light-background);
+            
+            &:focus{
+                outline: none;
+                transition: .2s ease-in-out;
+                border: 1px solid var(--letter-color);
+            }
+            
+            &::placeholder{
+                opacity: .5;
+                font-weight: bold;
+                color: var(--03);
+            }
+        }
+
+        input[type="submit"]{
+            width: 70%;
+            padding: 8px 0;
+            border: none;
+            color: var(--letter-color);
+            background: var(--light-background);
+            font-family: 'MaidenCrimes';
+
+            &:hover{
+                cursor: pointer;
+                transition: .2s ease-in-out;
+                background-color: #000000;
+            }
+
+            @include screenPORTRAIT{
+                width: 100%;
+            }
+        }
+    }
+
+    .form_block_2{
+        flex-direction: column;
+
+        div{
+            margin-bottom: 10px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .link_block{
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+
+        a{
+            font-size: .8em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--light-color-theme);
+
+            &:hover{
+                text-decoration: underline;
+            }
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.form_block{
+    margin-bottom: 10px;
+    @include flexAlignI-JC(center, center);
+}
+
+.form_block, .link_block{
+    padding: .8em;
+}

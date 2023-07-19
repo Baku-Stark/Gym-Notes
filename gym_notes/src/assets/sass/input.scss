@@ -1,7 +1,6 @@
 @import 'variables',
         'navbar_sidebar', 'footer',
-        'signin', 'signup',
-        'home', 'about', 'contacts';
+        'home', 'about', 'contacts', 'form';
 
 *{
     margin: 0;
@@ -21,10 +20,19 @@ section{
     @include flexAlignI-JC(center, center);
 }
 
-.page_title{
-    font-size: 4.1em;
-    color: var(--03);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.page{
+    padding: 15px;
+}
+
+.page_top_container{
+    text-align: center;
+    margin-bottom: 10vh;
+
+    .page_title{
+        font-size: 4.1em;
+        color: var(--03);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
 }
 
 .line{

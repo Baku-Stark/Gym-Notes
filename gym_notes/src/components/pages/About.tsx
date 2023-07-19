@@ -10,7 +10,7 @@ export function About(){
                 <title>Gym Notes - About Project</title>
             </Helmet>
             <div className={styles.about_container}>
-                <div className={styles.about_top_container}>
+                <div className={styles.page_top_container}>
                     <h2 className={styles.page_title}>About Project</h2>
                 </div>
                 <div className={styles.about_bot_container}>

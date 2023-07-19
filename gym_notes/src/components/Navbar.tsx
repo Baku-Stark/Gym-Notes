@@ -56,7 +56,7 @@ export function Navbar(){
                 {/* ===== END OF NAVBAR LINKS ===== */}
 
                 {/* ===== SIDEBAR ===== */}
-                <div ref={sidebar} className={`${styles.navbar_sidebar_container} ${styles.active}`}>
+                <div ref={sidebar} className={`${styles.navbar_sidebar_container}`}>
                     <div className={styles.sidebar_title}>
                         <h1 className={styles.main_title}>Gym Notes Project</h1>
                         <button

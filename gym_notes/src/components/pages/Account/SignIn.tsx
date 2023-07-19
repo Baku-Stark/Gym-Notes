@@ -19,7 +19,7 @@ export function SignIn(){
         e.preventDefault()
         console.log(login)
 
-        // limpar valores dos inputs
+        // clean input's values
         e.target.reset()
     }
 
