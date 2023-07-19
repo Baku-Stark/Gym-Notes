@@ -8,10 +8,10 @@ import styles from '../../../assets/css/output.module.css'
 export function SignUp(){
     const [register, setRegister] = useState(
         {
-            "user": '',
-            "password": '',
-            "con_password": '',
-            "email": ''
+            "user": "",
+            "email": "",
+            "password": "",
+            "con_password": ""
         }
     )
 
@@ -46,7 +46,7 @@ export function SignUp(){
             </Helmet>
             <div className={styles.register_container}>
                 <div className={styles.top_container}>
-                    <h3>Register</h3>
+                    <h3>REGISTER</h3>
                 </div>
                 <div className={styles.bot_container}>
                     <form

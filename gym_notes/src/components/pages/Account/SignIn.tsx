@@ -6,7 +6,9 @@ import { Helmet } from "react-helmet-async"
 import styles from '../../../assets/css/output.module.css'
 
 export function SignIn(){
-    const [login, setLogin] = useState({"user": '', "password": ''})
+    const [login, setLogin] = useState(
+        {"user": "", "password": ""}
+    )
 
     function handleChange(e:any){
         setLogin({
