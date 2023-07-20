@@ -6,7 +6,9 @@ note.txt
 # Python files
 backend/__pycache__
 backend/note_api.txt
-backend/*/
+
+backend/data/__pycache__
+backend/data/connect.json
 
 # Package
 note.txt
