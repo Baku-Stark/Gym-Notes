@@ -24,14 +24,15 @@ class DataBase:
     )
     cursor = con.cursor()
 
-    def read_authentic(self):
+    def read_accounts(self):
         """
-            Read all data in the table.
+            Read user's account in the table.
         """
 
-        query = 'SELECT * FROM authentic_accounts.accounts_users'
+        query = 'SELECT user_account FROM authentic_accounts.accounts_users'
         self.cursor.execute(query)
-        return [n for n in self.cursor.fetchall()]
+        data = self.cursor.fetchall()
+        return data
 
 myuuid = uuid.uuid4()
 print('Your UUID is: ' + str(myuuid))

@@ -63,6 +63,7 @@ export function SignUp(){
                                 placeholder="Type your username"
                                 className={styles.user}
                                 onChange={handleChange}
+                                maxLength={45}
                                 required
                             />
                         </div>

@@ -53,8 +53,16 @@ finally:
         password: str
 
     @app.get("/app_login_system/login", status_code=status.HTTP_202_ACCEPTED)
-    async def confirm_account():
-        return {"data": data_base.read_authentic()}
+    def confirm_account():
+        """
+            Confirm login account.
+        """
+        check_account = data_base.read_accounts()
+
+        return {
+            "response": True,
+            "data": check_account[0]
+        }
 
     if __name__ == '__main__':
         uvicorn.run("main:app", host='127.0.0.1', port=8000, reload=True)

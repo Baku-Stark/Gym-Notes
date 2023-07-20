@@ -43,6 +43,7 @@ export function CreateNote(){
                                     type="text"
                                     placeholder="Type your new note title"
                                     className={styles.new_note_title}
+                                    maxLength={45}
                                     onChange={handleChange}
                                     required
                                 />
