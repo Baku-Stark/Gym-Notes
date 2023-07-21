@@ -25,6 +25,16 @@ class DataBase:
     )
     cursor = con.cursor()
 
+    def create_user_table(self, user):
+        """
+            Create a note table.
+        """
+
+        query = f"""CREATE TABLE user_notes."{user}" (id_note INT NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(45) NOT NULL, text VARCHAR(200) NOT NULL)"""
+        self.cursor.execute(query)
+    
+    # ======================================================
+    
     def check_account(self):
         """
             Take all the data (user accounts) and make a comparison.
@@ -35,15 +45,31 @@ class DataBase:
         data = self.cursor.fetchall()
         return data
 
-    def create_new_user(self):
+    def create_new_user(self, account):
         """
             Create a new account. Gym Notes.
         """
 
         # ENCODE [PASSWORD]
-        encode_pass = base64.b64encode("Wallace".encode("ascii"))
-        password = str(encode_pass)[2:-1]
+        encode_pass = base64.b64encode(account['password'].encode("ascii"))
+        account['password'] = str(encode_pass)[2:-1]
 
         # GENERATE A USER ID
         user_uuid = uuid.uuid4()
-        print('Your UUID is: ' + str(user_uuid))
+        data = {
+            "id": str(user_uuid),
+            "user": account['user'],
+            "email": account['email'],
+            "password": account['password']
+        }
+
+        query = f"""INSERT INTO `authentic_accounts`.`accounts_users` (`iduser_account`, `user_account`, `user_notes`) VALUES ('{data['id']}', '{{
+            "id": "{data['id']}",
+            "user": "{data['user']}",
+            "email": "{data['email']}",
+            "password": "{data['password']}"}}', '{data['user']}')"""
+        self.cursor.execute(query)
+        self.con.commit()
+
+        # USER TABLE
+        # self.create_user_table(data['user'])

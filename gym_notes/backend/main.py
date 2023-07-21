@@ -54,7 +54,7 @@ finally:
         password: str
 
     @app.get("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
-    def confirm_login(account: Authentic_Login):
+    def confirm_signIN(account: Authentic_Login):
         """
             Confirm login account.
 
@@ -76,6 +76,20 @@ finally:
 
                 else:
                     return {"response": False}
+    
+    @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
+    def confirm_signUP(account: Authentic_Register):
+        """
+            Register a new account.
+
+            args:
+                account: JSON BODY
+        """
+        account = json.loads(account.json())
+
+        data_base.create_new_user(account)
+
+        return account
 
     if __name__ == '__main__':
         uvicorn.run("main:app", host='127.0.0.1', port=8000, reload=True)
