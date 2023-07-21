@@ -1,4 +1,5 @@
 import os
+import json
 
 # IMPORT [.py Files]
 from colors import Colors
@@ -37,14 +38,14 @@ finally:
         allow_headers=["*"],
     )
 
-    class authentic_login(BaseModel):
+    class Authentic_Login(BaseModel):
         """
             JSON Base Body (login)
         """
         user: str
         password: str
 
-    class authentic_register(BaseModel):
+    class Authentic_Register(BaseModel):
         """
             JSON Base Body (register)
         """
@@ -52,17 +53,29 @@ finally:
         email: str
         password: str
 
-    @app.get("/app_login_system/login", status_code=status.HTTP_202_ACCEPTED)
-    def confirm_account():
+    @app.get("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
+    def confirm_login(account: Authentic_Login):
         """
             Confirm login account.
-        """
-        check_account = data_base.read_accounts()
 
-        return {
-            "response": True,
-            "data": check_account[0]
-        }
+            args:
+                account: JSON BODY
+        """
+        check_account = data_base.check_account()
+        account = json.loads(account.json())
+        
+        for tuple_data in check_account:
+            for check_db in tuple_data:
+                check_db = json.loads(check_db)
+
+                if check_db['user'] == account['user'] and check_db['password'] == account['password']:
+                    return {
+                        "response": True,
+                        "data": check_db
+                    }
+
+                else:
+                    return {"response": False}
 
     if __name__ == '__main__':
         uvicorn.run("main:app", host='127.0.0.1', port=8000, reload=True)

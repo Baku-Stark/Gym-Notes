@@ -1,6 +1,7 @@
 import os
 import uuid
 import json
+import base64
 
 try:
     import mysql.connector
@@ -9,7 +10,7 @@ except ModuleNotFoundError:
     os.system("pip install mysql-connector-python")
 
 finally:
-    print("Finaly!")
+    pass
 
 class DataBase:
     # MySQL Connection
@@ -24,9 +25,9 @@ class DataBase:
     )
     cursor = con.cursor()
 
-    def read_accounts(self):
+    def check_account(self):
         """
-            Read user's account in the table.
+            Take all the data (user accounts) and make a comparison.
         """
 
         query = 'SELECT user_account FROM authentic_accounts.accounts_users'
@@ -34,5 +35,15 @@ class DataBase:
         data = self.cursor.fetchall()
         return data
 
-myuuid = uuid.uuid4()
-print('Your UUID is: ' + str(myuuid))
+    def create_new_user(self):
+        """
+            Create a new account. Gym Notes.
+        """
+
+        # ENCODE [PASSWORD]
+        encode_pass = base64.b64encode("Wallace".encode("ascii"))
+        password = str(encode_pass)[2:-1]
+
+        # GENERATE A USER ID
+        user_uuid = uuid.uuid4()
+        print('Your UUID is: ' + str(user_uuid))
