@@ -79,7 +79,7 @@ export function SignUp({
                                 <input type="submit" value="Create" />
                             </div>
                             <div className={styles.link_block}>
-                                <Link to={"/sign_in"}>I already have an account</Link>
+                                <Link to={"/"}>I already have an account</Link>
                             </div>
                         </form>
                     </div>

@@ -1,16 +1,23 @@
-// IMPORTAÇÕES
+import { useNavigate } from 'react-router-dom'
+
+// IMPORT [ROUTES]
+import { ContainerAccount } from './components/routes/ContainerAccount'
+import { ContainerRoutes } from './components/routes/ContainerRoutes'
+
+// IMPORT [COMPONENTS]
 import { useState } from "react"
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
-import { ContainerRoutes } from './components/routes/ContainerRoutes'
 
 // IMPORT [LOGIN]
-import { ContainerAccount } from './components/routes/ContainerAccount'
+import { auth_link } from './components/pages/account/Auth'
 
 import styles from './assets/css/output.module.css'
 
 
 function App(){
+  const navigate = useNavigate()
+
   const [isLogged, setisLogged] = useState(false)
   
   const [login, setLogin] = useState(
@@ -49,19 +56,40 @@ function App(){
       })
   }
 
-  function register_authentic(e:any){
+  async function register_authentic(e:any){
       e.preventDefault()
-      console.log(register)
 
       if(register.password == register.con_password){
-          console.log('Senha iguais!')
+          document.querySelector(`.${styles.password}`)!.style.border = 'none'
+          document.querySelector(`.${styles.password}`)!.placeholder = "Type your password"
+
+          document.querySelector("#con_password")!.style.border = 'none'
+          document.querySelector("#con_password")!.placeholder = "Confirm your password"
           
-          // clean input's values
-          e.target.reset()
+          await fetch(auth_link.register_auth, {
+            method:'POST',
+            body:JSON.stringify(register),
+            headers:{
+                'Content-Type':'application/json'
+            }
+          })
+            .then((resp) => resp.json())
+            .then((data) => {
+              console.log(data)
+              e.target.reset()
+              navigate('/')
+            })
       }
 
       else{
-          console.log('=== Senhas diferentes!')
+        document.querySelector(`.${styles.password}`)!.style.border = '2px solid red'
+        document.querySelector(`.${styles.password}`)!.placeholder = "Different passwords"
+
+        document.querySelector("#con_password")!.style.border = '2px solid red'
+        document.querySelector("#con_password")!.placeholder = "Different passwords"
+
+        // clean input's values
+        e.target.reset()
       }
   }
   return (
@@ -78,7 +106,8 @@ function App(){
             handleChange={handleChange}
             handleChangeRegister={handleChangeRegister}
             login_authentic={login_authentic}
-            register_authentic={register_authentic}/>
+            register_authentic={register_authentic}
+          />
         </>
       )}
     </>

@@ -53,6 +53,7 @@ finally:
         email: str
         password: str
 
+    # http://127.0.0.1:8000/app_login_system/auth
     @app.get("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
     def confirm_signIN(account: Authentic_Login):
         """
@@ -77,6 +78,7 @@ finally:
                 else:
                     return {"response": False}
     
+    # http://127.0.0.1:8000/app_register_system/auth
     @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
     def confirm_signUP(account: Authentic_Register):
         """
