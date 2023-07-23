@@ -1,5 +1,6 @@
 import os
 import json
+import base64
 
 # IMPORT [.py Files]
 from colors import Colors
@@ -62,21 +63,19 @@ finally:
             args:
                 account: JSON BODY
         """
-        check_account = data_base.check_account()
+        check_account = data_base.check_user_account()
         account = json.loads(account.json())
         
         for tuple_data in check_account:
             for check_db in tuple_data:
                 check_db = json.loads(check_db)
 
-                if check_db['user'] == account['user'] and check_db['password'] == account['password']:
-                    return {
-                        "response": True,
-                        "data": check_db
-                    }
+                # ENCODE [PASSWORD]
+                encode_pass = base64.b64encode(account['password'].encode("ascii"))
+                account['password'] = str(encode_pass)[2:-1]
 
-                else:
-                    return {"response": False}
+                if check_db['user'] == account['user'] and check_db['password'] == account['password']:
+                    print(check_db)
     
     # http://127.0.0.1:8000/app_register_system/auth
     @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
