@@ -37,13 +37,16 @@ class UserDataBase:
         """
             Create a note table.
         """
+        cursor = self.con.cursor()
 
         query = f"""CREATE TABLE `user_notes`.`{user}` (id_note INT NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(45) NOT NULL, text VARCHAR(200) NOT NULL)"""
-        self.cursor.execute(query)
+        cursor.execute(query)
         
         # ALERT
         print('\033[36m' + "INFO [REGISTER_USER] :  " + '\033[m', end="")
         print(f"[{user}] table sucessfully created!")
+
+        cursor.close()
 
 class DataBase:
     # VERIFY
@@ -64,16 +67,16 @@ class DataBase:
         database = con_json['database_authentic'],
         auth_plugin='mysql_native_password'
     )
-    cursor = con.cursor()
 
-    def get_user_account(self, user: str):
+    def get_user_account(self, user: str) -> dict:
         """
             Get all user accounts in the database and return the logged in customer account.
         """
+        cursor = self.con.cursor()
 
         query = 'SELECT * FROM authentic_accounts.accounts_users'
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
 
         set_account = {
             "id": "",
@@ -84,67 +87,76 @@ class DataBase:
 
         for account in data:
             if user == account[2]:
-                # account_json = json.loads(account[1])
-                print(account[1]['name'])
+                account_json = json.loads(account[1])
+                set_account["id"] = account_json["id"]
+                set_account["user"] = account_json["user"]
+                set_account["email"] = account_json["email"]
+                set_account["token"] = account[3]
 
-        #print(set_account)
+                break
+
+        cursor.close()
+        return set_account
 
     def check_id_account(self):
         """
             Take all the data (ID) and make a comparison.
         """
+        cursor = self.con.cursor()
 
         query = 'SELECT iduser_account FROM authentic_accounts.accounts_users'
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
 
-        # self.cursor.close()
-        # self.con.close()
+        cursor.close()
+        
         return data
     
     def check_token_account(self):
         """
             Take all the data (TOKEN) and make a comparison.
         """
+        cursor = self.con.cursor()
 
         query = 'SELECT token FROM authentic_accounts.accounts_users'
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
 
-        # self.cursor.close()
-        # self.con.close()
+        cursor.close()
+        
         return data
     
     def check_username_account(self):
         """
             Take all the data (USERNAME) and make a comparison.
         """
+        cursor = self.con.cursor()
 
         query = 'SELECT user_notes FROM authentic_accounts.accounts_users'
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
 
-        # self.cursor.close()
-        # self.con.close()
+        cursor.close()
         return data
     
     def check_user_account(self):
         """
             Take all the data (user accounts) and make a comparison.
         """
+        cursor = self.con.cursor()
 
         query = 'SELECT user_account FROM authentic_accounts.accounts_users'
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
 
-        # self.cursor.close()
-        # self.con.close()
+        cursor.close()
         return data
 
     def create_new_user(self, account):
         """
             Create a new account. Gym Notes.
         """
+        cursor = self.con.cursor()
 
         # User convert
         user_convert = account['user'].lower().strip().replace(" ", "_")
@@ -197,7 +209,7 @@ class DataBase:
                 '{data['token']}'
             )"""
 
-            self.cursor.execute(query)
+            cursor.execute(query)
             self.con.commit()
 
             # ALERT
@@ -206,6 +218,7 @@ class DataBase:
 
             # USER TABLE
             self.user_data_base.create_user_table(data['user'])
+            cursor.close()
 
     def generate_user_id(self) -> str:
         """

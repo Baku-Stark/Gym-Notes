@@ -65,24 +65,22 @@ finally:
         """
         account = json.loads(account.json())
 
-        data_base.get_user_account("jorg")
-
-        # accept_account = {}
+        accept_account = {}
         
-        # for tuple_data in data_base.check_user_account():
-        #     for check_db in tuple_data:
-        #         check_db = json.loads(check_db)
+        for tuple_data in data_base.check_user_account():
+            for check_db in tuple_data:
+                check_db = json.loads(check_db)
 
-        #         # ENCODE [PASSWORD]
-        #         encode_pass = base64.b64encode(account['password'].encode("ascii"))
-        #         account['password'] = str(encode_pass)[2:-1]
+                # ENCODE [PASSWORD]
+                encode_pass = base64.b64encode(account['password'].encode("ascii"))
+                account['password'] = str(encode_pass)[2:-1]
 
-        #         if check_db['user'] == account['user'] and check_db['password'] == account['password']:
-        #             accept_account = check_db
+                if check_db['user'] == account['user'] and check_db['password'] == account['password']:
+                    accept_account = data_base.get_user_account(account['user'])
 
-        #             break
+                    break
 
-        # return accept_account
+        return accept_account
     
     # http://127.0.0.1:8000/app_register_system/auth
     @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
