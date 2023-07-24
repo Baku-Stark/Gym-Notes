@@ -66,6 +66,29 @@ class DataBase:
     )
     cursor = con.cursor()
 
+    def get_user_account(self, user: str):
+        """
+            Get all user accounts in the database and return the logged in customer account.
+        """
+
+        query = 'SELECT * FROM authentic_accounts.accounts_users'
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+
+        set_account = {
+            "id": "",
+            "user": "",
+            "email": "",
+            "token": ""
+        }
+
+        for account in data:
+            if user == account[2]:
+                # account_json = json.loads(account[1])
+                print(account[1]['name'])
+
+        #print(set_account)
+
     def check_id_account(self):
         """
             Take all the data (ID) and make a comparison.

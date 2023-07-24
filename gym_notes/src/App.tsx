@@ -31,9 +31,21 @@ function App(){
       })
   }
 
-  function login_authentic(e:any){
+  async function login_authentic(e:any){
       e.preventDefault()
-      console.log(login)
+
+      await fetch(auth_link.login_auth, {
+        method:'POST',
+        body:JSON.stringify(login),
+        headers:{
+            'Content-Type':'application/json'
+        }
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data)
+          // navigate('/')
+        })
 
       // clean input's values
       e.target.reset()

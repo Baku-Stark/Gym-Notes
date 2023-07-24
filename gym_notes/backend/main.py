@@ -55,7 +55,7 @@ finally:
         password: str
 
     # http://127.0.0.1:8000/app_login_system/auth
-    @app.get("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
+    @app.post("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
     def confirm_signIN(account: Authentic_Login):
         """
             Confirm login account.
@@ -63,19 +63,26 @@ finally:
             args:
                 account: JSON BODY
         """
-        check_account = data_base.check_user_account()
         account = json.loads(account.json())
+
+        data_base.get_user_account("jorg")
+
+        # accept_account = {}
         
-        for tuple_data in check_account:
-            for check_db in tuple_data:
-                check_db = json.loads(check_db)
+        # for tuple_data in data_base.check_user_account():
+        #     for check_db in tuple_data:
+        #         check_db = json.loads(check_db)
 
-                # ENCODE [PASSWORD]
-                encode_pass = base64.b64encode(account['password'].encode("ascii"))
-                account['password'] = str(encode_pass)[2:-1]
+        #         # ENCODE [PASSWORD]
+        #         encode_pass = base64.b64encode(account['password'].encode("ascii"))
+        #         account['password'] = str(encode_pass)[2:-1]
 
-                if check_db['user'] == account['user'] and check_db['password'] == account['password']:
-                    print(check_db)
+        #         if check_db['user'] == account['user'] and check_db['password'] == account['password']:
+        #             accept_account = check_db
+
+        #             break
+
+        # return accept_account
     
     # http://127.0.0.1:8000/app_register_system/auth
     @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
