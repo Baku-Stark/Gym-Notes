@@ -5,7 +5,7 @@ import { ContainerAccount } from './components/routes/ContainerAccount'
 import { ContainerRoutes } from './components/routes/ContainerRoutes'
 
 // IMPORT [COMPONENTS]
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 
@@ -19,6 +19,8 @@ function App(){
   const navigate = useNavigate()
 
   const [isLogged, setIsLogged] = useState(false)
+
+  const [account, setAccount] = useState({})
   
   const [login, setLogin] = useState(
     {"user": "", "password": ""}
@@ -43,7 +45,8 @@ function App(){
       })
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data)
+          setAccount(data)
+          localStorage.setItem("token", data['token'])
           // setIsLogged(true)
           // navigate('/')
         })
@@ -105,12 +108,21 @@ function App(){
         e.target.reset()
       }
   }
+
+  // =================================================
+  useEffect(() => {
+    if(localStorage.length > 0){
+      console.log("HEY")
+      console.log(localStorage.getItem("token"))
+    }
+  }, [])
+
   return (
     <>
       {isLogged ? (
         <>
-          <Navbar />
-          <ContainerRoutes />
+          <Navbar user={account['user']}/>
+          <ContainerRoutes account={account}/>
           <Footer />
         </>
       ) : (

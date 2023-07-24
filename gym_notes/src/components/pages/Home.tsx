@@ -6,7 +6,7 @@ import styles from '../../assets/css/output.module.css'
 // IMAGE
 import fitness_stats from "../../assets/img/fitness_stats.svg"
 
-export function Home(){
+export function Home({account}:any){
     return(
         <>
             <Helmet>
@@ -15,7 +15,7 @@ export function Home(){
             <div className={styles.home_container}>
                 <div className={styles.home_top_container}>
                     <img src={fitness_stats}/>
-                    <h2>Welcome <span>{"<Nome do usuário>"}</span> !</h2>
+                    <h2>Welcome <span>{account['user']}</span> !</h2>
                 </div>
                 <div className={styles.home_bot_container}>
                     <Link to={"/create_note/"} className={styles.redirect_button}>

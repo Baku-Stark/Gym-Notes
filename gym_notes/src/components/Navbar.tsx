@@ -7,8 +7,7 @@ import personal from '../assets/img/personal_trainer.svg'
 // CSS PRINCIPAL
 import styles from '../assets/css/output.module.css'
 
-export function Navbar(){
-    const user = "wallace"
+export function Navbar({user}:any){
     const sidebar = useRef()
 
     function closeSideBar(){
@@ -50,7 +49,7 @@ export function Navbar(){
                         <li className={styles.link_item_navbar}>
                             <Link to={"/about/"}>About</Link>
                         </li>
-                        <Link to={"/sign_in/"} className={`${styles.link_item_navbar} ${styles.login}`}>Login</Link>
+                        <Link to={"/sign_in/"} className={`${styles.link_item_navbar} ${styles.login}`}>Logout</Link>
                     </ul>
                 </div>
                 {/* ===== END OF NAVBAR LINKS ===== */}
@@ -84,7 +83,7 @@ export function Navbar(){
                         </li>
 
                         {/* LOGIN | REGISTER */}
-                        <Link to={"/sign_in/"} className={styles.link_item_sidebar_login}>Login</Link>
+                        <Link to={"/sign_in/"} className={styles.link_item_sidebar_login}>Logout</Link>
                     </ul>
                 </div>
                 {/* ===== END OF SIDEBAR ===== */}
