@@ -18,7 +18,7 @@ import styles from './assets/css/output.module.css'
 function App(){
   const navigate = useNavigate()
 
-  const [isLogged, setisLogged] = useState(false)
+  const [isLogged, setIsLogged] = useState(false)
   
   const [login, setLogin] = useState(
     {"user": "", "password": ""}
@@ -44,6 +44,7 @@ function App(){
         .then((resp) => resp.json())
         .then((data) => {
           console.log(data)
+          // setIsLogged(true)
           // navigate('/')
         })
 

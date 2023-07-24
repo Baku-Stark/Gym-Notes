@@ -20,9 +20,16 @@
     }
 }
 
+.login_container, .register_container{
+    box-shadow: 20px 20px 40px #000000, -20px -20px 40px #000000;
+}
+
 .auth_container{
     @include Landing;
     @include flexAlignI-JC(center, center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../img/bg_auth.jpg');
 
     form{
         .form_block, .form_block_2{

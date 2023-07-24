@@ -68,7 +68,7 @@ class DataBase:
         auth_plugin='mysql_native_password'
     )
 
-    def get_user_account(self, user: str) -> dict:
+    def get_user_account(self, user: str):
         """
             Get all user accounts in the database and return the logged in customer account.
         """
@@ -94,8 +94,8 @@ class DataBase:
                 set_account["token"] = account[3]
 
                 break
-
-        cursor.close()
+        
+        # print(set_account)
         return set_account
 
     def check_id_account(self):
