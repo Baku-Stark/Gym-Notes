@@ -53,6 +53,7 @@ class DataBase:
     UUID_VERIFY = True
     TOKEN_VERIFY = True
     USER_ACCOUNT_VERIFY = True
+    CHECKED_AUTO_LOGIN = False
 
     # User (create) table
     user_data_base = UserDataBase()
@@ -151,7 +152,40 @@ class DataBase:
 
         cursor.close()
         return data
+    
+    def check_auto_login(self, token: str):
+        """
+            Function to verify the login using a token.
+        """
+        cursor = self.con.cursor()
 
+        read_all_user_token = 'SELECT token FROM authentic_accounts.accounts_users'
+        cursor.execute(read_all_user_token)
+        all_user_token = cursor.fetchall()
+
+        # current token
+        # print(token)
+        
+        # verify user token
+        accept_account = {}
+        for list_token in all_user_token:
+            if token == list_token[0]:
+                CHECKED_AUTO_LOGIN = True
+        
+                if(CHECKED_AUTO_LOGIN):
+                    read_all_user = 'SELECT * FROM authentic_accounts.accounts_users'
+
+                    cursor.execute(read_all_user)
+                    all_users = cursor.fetchall()
+
+                    for user_tuple in all_users:
+                        if token == user_tuple[-1]:
+                            # print(user_tuple[2])
+                            accept_account = self.get_user_account(user_tuple[2])
+                            break
+                break
+        return accept_account
+    
     def create_new_user(self, account):
         """
             Create a new account. Gym Notes.

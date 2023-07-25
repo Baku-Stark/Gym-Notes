@@ -54,13 +54,23 @@ finally:
         email: str
         password: str
 
-    @app.post("/app_login_system/auth", status_code=status.HTTP_202_ACCEPTED)
+    class Token(BaseModel):
+        """
+            User Token
+        """
+
+        token: str
+
+    @app.post("/app_login_system/auth", status_code=status.HTTP_200_OK)
     def confirm_signIN(account: Authentic_Login):
         """
             Confirm login account.
 
             args:
                 account: JSON BODY
+
+            return:
+                accept_account: JSON user account
         """
         account = json.loads(account.json())
 
@@ -81,6 +91,19 @@ finally:
                     break
 
         return accept_account
+
+    @app.post("/app_login_system/auto_auth", status_code=status.HTTP_200_OK)
+    def confirm_auto_signIN(token: Token):
+        """
+            Login with user token.
+
+            args:
+                token: JSON BODY
+        """
+        user_token = json.loads(token.json())
+
+        return data_base.check_auto_login(user_token['token'])
+
     
     @app.post("/app_register_system/auth", status_code=status.HTTP_201_CREATED)
     def confirm_signUP(account: Authentic_Register):
@@ -89,6 +112,9 @@ finally:
 
             args:
                 account: JSON BODY
+
+            return:
+                account: JSON user account
         """
         account = json.loads(account.json())
 
