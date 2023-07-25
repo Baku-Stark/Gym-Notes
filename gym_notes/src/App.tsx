@@ -47,8 +47,8 @@ function App(){
         .then((data) => {
           setAccount(data)
           localStorage.setItem("token", data['token'])
-          // setIsLogged(true)
-          // navigate('/')
+          setIsLogged(true)
+          navigate('/home')
         })
 
       // clean input's values
@@ -112,8 +112,21 @@ function App(){
   // =================================================
   useEffect(() => {
     if(localStorage.length > 0){
-      console.log("HEY")
-      console.log(localStorage.getItem("token"))
+      window.alert("Auto login enabled!")
+
+      fetch(auth_link.auto_login_auth, {
+        method:'POST',
+        body:JSON.stringify({"token": localStorage.getItem("token")}),
+        headers:{
+            'Content-Type':'application/json'
+        }
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setAccount(data)
+          setIsLogged(true)
+          navigate('/home')
+        })
     }
   }, [])
 

@@ -99,6 +99,9 @@ finally:
 
             args:
                 token: JSON BODY
+
+            return:
+                JSON user account
         """
         user_token = json.loads(token.json())
 

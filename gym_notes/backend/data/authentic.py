@@ -46,8 +46,6 @@ class UserDataBase:
         print('\033[36m' + "INFO [REGISTER_USER] :  " + '\033[m', end="")
         print(f"[{user}] table sucessfully created!")
 
-        cursor.close()
-
 class DataBase:
     # VERIFY
     UUID_VERIFY = True
@@ -108,8 +106,6 @@ class DataBase:
         query = 'SELECT iduser_account FROM authentic_accounts.accounts_users'
         cursor.execute(query)
         data = cursor.fetchall()
-
-        cursor.close()
         
         return data
     
@@ -122,8 +118,6 @@ class DataBase:
         query = 'SELECT token FROM authentic_accounts.accounts_users'
         cursor.execute(query)
         data = cursor.fetchall()
-
-        cursor.close()
         
         return data
     
@@ -137,7 +131,6 @@ class DataBase:
         cursor.execute(query)
         data = cursor.fetchall()
 
-        cursor.close()
         return data
     
     def check_user_account(self):
@@ -150,7 +143,6 @@ class DataBase:
         cursor.execute(query)
         data = cursor.fetchall()
 
-        cursor.close()
         return data
     
     def check_auto_login(self, token: str):
@@ -252,7 +244,6 @@ class DataBase:
 
             # USER TABLE
             self.user_data_base.create_user_table(data['user'])
-            cursor.close()
 
     def generate_user_id(self) -> str:
         """
