@@ -11,7 +11,7 @@ try:
     import mysql.connector
 
 except ModuleNotFoundError:
-    os.system("pip install mysql-connector-python")
+    os.system("pip install -r backend/requirements.txt")
 
 finally:
     pass
@@ -37,14 +37,67 @@ class UserDataBase:
         """
             Create a note table.
         """
-        cursor = self.con.cursor()
 
         query = f"""CREATE TABLE `user_notes`.`{user}` (id_note INT NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(45) NOT NULL, text VARCHAR(200) NOT NULL)"""
-        cursor.execute(query)
+        self.cursor.execute(query)
         
         # ALERT
         print('\033[36m' + "INFO [REGISTER_USER] :  " + '\033[m', end="")
         print(f"[{user}] table sucessfully created!")
+
+    def create_user_note(self, user: str):
+        """
+            Create a new note.
+
+            return:
+                user : str
+        """
+        print(f"User set: {user}")
+
+        query = f"INSERT INTO `user_notes`.`{user}` (`id_note`, `title`, `text`) VALUES ('1', 'Primeiro Treino', 'Fazer 3 séries de 15')"
+        self.cursor.execute(query)
+        self.con.commit()
+
+    def read_all_user_note(self, user: str):
+        """
+            Read all user data.
+
+            args:
+                user: str
+        """
+
+        query = f"SELECT * FROM user_notes.{user}"
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+
+        return data
+
+    def update_user_note(self, user, id, note):
+        """
+            Read all user data.
+
+            args:
+                user: str
+                id: int
+                note: dict
+        """
+
+        query = f"UPDATE `user_notes`.`{user}` SET `title` = '{note['title']}', `text` = '{note['text']}' WHERE (`id_note` = {id})"
+        self.cursor.execute(query)
+        self.con.commit()
+
+    def delete_user_note(self, user:str, id:int):
+        """
+            Delete a specific user annotation.
+
+            args:
+                user: str
+                id: int
+        """
+        
+        query = f"DELETE FROM `user_notes`.`{user}` WHERE (`id_note` = {id})"
+        self.cursor.execute(query)
+        self.con.commit()
 
 class DataBase:
     # VERIFY
