@@ -1,6 +1,6 @@
 @import 'variables',
         'navbar_sidebar', 'footer',
-        'home', 'about', 'contacts', 'form';
+        'home', 'about', 'contacts', 'form', 'card_notes';
 
 *{
     margin: 0;
@@ -18,6 +18,10 @@ section{
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
     @include flexAlignI-JC(center, center);
+}
+
+.w_100{
+    width: 100%;
 }
 
 .page{

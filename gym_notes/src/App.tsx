@@ -18,7 +18,7 @@ import styles from './assets/css/output.module.css'
 function App(){
   const navigate = useNavigate()
 
-  const [isLogged, setIsLogged] = useState(false)
+  const [isLogged, setIsLogged] = useState(true)
 
   const [account, setAccount] = useState({})
   
@@ -54,6 +54,7 @@ function App(){
       // clean input's values
       e.target.reset()
   }
+
   // =================================================
   const [register, setRegister] = useState(
     {
@@ -110,6 +111,11 @@ function App(){
   }
 
   // =================================================
+  function logout(){
+    console.log("Você deslogou!!")
+  }
+
+  // =================================================
   useEffect(() => {
     if(localStorage.length > 0){
       window.alert("Auto login enabled!")
@@ -134,7 +140,7 @@ function App(){
     <>
       {isLogged ? (
         <>
-          <Navbar user={account['user']}/>
+          <Navbar user={account['user']} logout={logout}/>
           <ContainerRoutes account={account}/>
           <Footer />
         </>

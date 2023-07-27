@@ -148,7 +148,7 @@ finally:
         return note
     
     @app.get("/app_read_user_note/{user}", status_code=status.HTTP_202_ACCEPTED)
-    def read_new_note(user: str):
+    def read_user_note(user: str):
         """
             Read all notes (user) route.
 

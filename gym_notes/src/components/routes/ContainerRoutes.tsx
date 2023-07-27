@@ -6,6 +6,7 @@ import { Notes } from '../pages/Notes'
 import { Contacts } from '../pages/Contacts'
 import { About } from '../pages/About'
 import { CreateNote } from '../pages/CreateNote'
+import { EditNote } from '../pages/EditNote'
 
 export function ContainerRoutes({account}:any){
     return(
@@ -16,6 +17,7 @@ export function ContainerRoutes({account}:any){
                 <Route path={"/contacts"} element={<Contacts/>}></Route>
                 <Route path={"/about"} element={<About/>}></Route>
                 <Route path={"/create_note"} element={<CreateNote/>}></Route>
+                <Route path={"/edit_note"} element={<EditNote/>}></Route>
             </Routes>
         </section>
     )

@@ -7,7 +7,7 @@ import personal from '../assets/img/personal_trainer.svg'
 // CSS PRINCIPAL
 import styles from '../assets/css/output.module.css'
 
-export function Navbar({user}:any){
+export function Navbar({user, logout}:any){
     const sidebar = useRef()
 
     function closeSideBar(){
@@ -22,7 +22,7 @@ export function Navbar({user}:any){
         <header>
             <nav>
                 <div className={styles.navbar_title_container}>
-                    <Link to={"/"} about='Home Page'>
+                    <Link to={"/home"} about='Home Page'>
                         <h1 className={styles.main_title}>Gym Notes Project</h1>
                     </Link>
                 </div>
@@ -49,7 +49,15 @@ export function Navbar({user}:any){
                         <li className={styles.link_item_navbar}>
                             <Link to={"/about/"}>About</Link>
                         </li>
-                        <Link to={"/sign_in/"} className={`${styles.link_item_navbar} ${styles.login}`}>Logout</Link>
+                        {/* LOGOUT */}
+                        <Link
+                            to={"/"}
+                            onClick={logout}
+                            className={`${styles.link_item_navbar}
+                            ${styles.login}`}
+                        >
+                            Logout
+                        </Link>
                     </ul>
                 </div>
                 {/* ===== END OF NAVBAR LINKS ===== */}
@@ -82,8 +90,14 @@ export function Navbar({user}:any){
                             <Link to={"/about/"}>About</Link>
                         </li>
 
-                        {/* LOGIN | REGISTER */}
-                        <Link to={"/sign_in/"} className={styles.link_item_sidebar_login}>Logout</Link>
+                        {/* LOGOUT */}
+                        <Link
+                            to={"/"}
+                            onClick={logout}
+                            className={styles.link_item_sidebar_login}
+                        >
+                                Logout
+                        </Link>
                     </ul>
                 </div>
                 {/* ===== END OF SIDEBAR ===== */}

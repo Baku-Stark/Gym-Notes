@@ -3,19 +3,19 @@ import { Helmet } from "react-helmet-async"
 
 import styles from '../../assets/css/output.module.css'
 
-export function CreateNote(){
-    const [note, setNote] = useState({"title": '', "text": ''})
+export function EditNote(){
+    const [editnote, setEditNote] = useState({"title": '', "text": ''})
 
     function handleChange(e:any){
-        setNote({
-            ...note,
+        setEditNote({
+            ...editnote,
             [e.target.name]: e.target.value
         })
     }
 
-    function createNewNote(e: any){
+    function editUserNote(e: any){
         e.preventDefault()
-        console.log(note)
+        console.log(editnote)
 
         // clean input's values
         e.target.reset()
@@ -24,15 +24,16 @@ export function CreateNote(){
     return(
         <>
             <Helmet>
-                <title>Gym Note - Create a Note</title>
+                <title>Edit Note - {"<Nome do título>"}</title>
             </Helmet>
             <div className={styles.page}>
                 <div className={styles.page_top_container}>
-                    <h2  className={styles.page_title}>Create a new note</h2>
+                    <h2  className={styles.page_title}>Edit your Note</h2>
+                    <span>{"<Título>"}</span>
                 </div>
                 <div className={styles.bot_container}>
                     <div className={styles.create_note_container}>
-                        <form onSubmit={createNewNote} method="post">
+                        <form onSubmit={editUserNote} method="post">
                             <div className={styles.form_block}>
                                 <label htmlFor="title">
                                     Note Title:

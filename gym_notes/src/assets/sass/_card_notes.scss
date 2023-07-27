@@ -1,0 +1,56 @@
+@import 'variables';
+
+.card_container{
+    width: 100%;
+    @include GridLayout-Columns(repeat(2, 1fr));
+
+    .card_note{
+        margin: 20px 5px;
+        background-color: #000000;
+
+        .card_top, .card_mid, .card_bot{
+            padding: 15px;
+        }
+
+        .card_top h4{
+            padding: 10px;
+            color: var(--color-theme);
+            background-color: var(--dark-background);
+        }
+
+        .card_mid p{
+            opacity: .6;
+            color: var(--letter-color);
+        }
+
+        .card_bot{
+            display: flex;
+            justify-content: space-around;
+
+            .button_opc{
+                padding: 10px;
+                font-weight: bold;
+                text-decoration: none;
+                border: 1px solid var(--dark-background);
+                color: var(--color-theme);
+                background-color: var(--dark-background);
+            }
+
+            .delete:hover{
+                cursor: pointer;
+                border: 2px solid #880000;
+                color: #880000;
+            }
+
+            .edit:hover{
+                cursor: pointer;
+                border: 2px solid #058800;
+                color: #058800;
+            }
+        }
+    }
+
+    @include screenTablet-bootstrap{
+        @include GridLayout-Columns(repeat(1, 1fr));
+    }
+}
