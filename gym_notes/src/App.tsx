@@ -1,3 +1,5 @@
+import { useState } from "react"
+// import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 
 // IMPORT [ROUTES]
@@ -5,7 +7,6 @@ import { ContainerAccount } from './components/routes/ContainerAccount'
 import { ContainerRoutes } from './components/routes/ContainerRoutes'
 
 // IMPORT [COMPONENTS]
-import { useState, useEffect } from "react"
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 
@@ -18,7 +19,7 @@ import styles from './assets/css/output.module.css'
 function App(){
   const navigate = useNavigate()
 
-  const [isLogged, setIsLogged] = useState(true)
+  const [isLogged, setIsLogged] = useState(false)
 
   const [account, setAccount] = useState({})
   
@@ -48,7 +49,7 @@ function App(){
           setAccount(data)
           localStorage.setItem("token", data['token'])
           setIsLogged(true)
-          navigate('/home')
+          navigate('/home/')
         })
 
       // clean input's values
@@ -112,29 +113,30 @@ function App(){
 
   // =================================================
   function logout(){
-    console.log("Você deslogou!!")
+    localStorage.clear()
+    setIsLogged(false)
   }
 
   // =================================================
-  useEffect(() => {
-    if(localStorage.length > 0){
-      window.alert("Auto login enabled!")
+  // useEffect(() => {
+  //   if(localStorage.length > 0){
+  //     window.alert("Auto login enabled!")
 
-      fetch(auth_link.auto_login_auth, {
-        method:'POST',
-        body:JSON.stringify({"token": localStorage.getItem("token")}),
-        headers:{
-            'Content-Type':'application/json'
-        }
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          setAccount(data)
-          setIsLogged(true)
-          navigate('/home')
-        })
-    }
-  }, [])
+  //     fetch(auth_link.auto_login_auth, {
+  //       method:'POST',
+  //       body:JSON.stringify({"token": localStorage.getItem("token")}),
+  //       headers:{
+  //           'Content-Type':'application/json'
+  //       }
+  //     })
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         setAccount(data)
+  //         setIsLogged(true)
+  //         navigate('/home/')
+  //       })
+  //   }
+  // }, [])
 
   return (
     <>

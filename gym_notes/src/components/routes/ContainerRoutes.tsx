@@ -17,7 +17,7 @@ export function ContainerRoutes({account}:any){
                 <Route path={"/contacts"} element={<Contacts/>}></Route>
                 <Route path={"/about"} element={<About/>}></Route>
                 <Route path={"/create_note"} element={<CreateNote/>}></Route>
-                <Route path={"/edit_note"} element={<EditNote/>}></Route>
+                <Route path={"/edit_note/:title/:user/:id"} element={<EditNote/>}></Route>
             </Routes>
         </section>
     )

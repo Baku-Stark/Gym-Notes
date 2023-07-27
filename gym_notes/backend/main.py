@@ -59,7 +59,6 @@ finally:
         """
             User Token
         """
-
         token: str
 
     class User_Note(BaseModel):
@@ -79,6 +78,10 @@ finally:
 
             return:
                 accept_account: JSON user account
+                                    "id"
+                                    "user"
+                                    "email"
+                                    "token"
         """
         account = json.loads(account.json())
 
