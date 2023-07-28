@@ -45,7 +45,7 @@ class UserDataBase:
         print('\033[36m' + "INFO [REGISTER_USER] :  " + '\033[m', end="")
         print(f"[{user}] table sucessfully created!")
 
-    def create_user_note(self, user: str):
+    def create_user_note(self, user: str, note: dict):
         """
             Create a new note.
 
@@ -53,8 +53,9 @@ class UserDataBase:
                 user : str
         """
         print(f"User set: {user}")
+        print(f"User set: {user}")
 
-        query = f"INSERT INTO `user_notes`.`{user}` (`id_note`, `title`, `text`) VALUES ('1', 'Primeiro Treino', 'Fazer 3 séries de 15')"
+        query = f"INSERT INTO `user_notes`.`{user}` (`title`, `text`) VALUES ('{note['title']}', '{note['text']}')"
         self.cursor.execute(query)
         self.con.commit()
 

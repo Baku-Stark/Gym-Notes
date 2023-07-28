@@ -146,7 +146,9 @@ finally:
                 note: JSON BODY
         """
 
-        user_data_base.create_user_note(user)
+        note = json.loads(note.json())
+
+        user_data_base.create_user_note(user, note)
 
         return note
     

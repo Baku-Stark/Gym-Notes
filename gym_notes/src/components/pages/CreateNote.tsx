@@ -1,9 +1,14 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet-async"
+import { useNavigate } from "react-router-dom"
+
+import { note_auth } from "./Note_Auth"
 
 import styles from '../../assets/css/output.module.css'
 
-export function CreateNote(){
+export function CreateNote({user}: any){
+    const navigate = useNavigate()
+
     const [note, setNote] = useState({"title": '', "text": ''})
 
     function handleChange(e:any){
@@ -13,12 +18,25 @@ export function CreateNote(){
         })
     }
 
-    function createNewNote(e: any){
+    async function createNewNote(e: any){
         e.preventDefault()
-        console.log(note)
+        // console.log(note)
 
-        // clean input's values
-        e.target.reset()
+        await fetch(`${note_auth.create}/${user}`, {
+            method:'POST',
+            body:JSON.stringify(note),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data)
+                navigate('/home/')
+                // clean input's values
+                e.target.reset()
+            })
+            .catch((err) => console.log(err))
     }
 
     return(

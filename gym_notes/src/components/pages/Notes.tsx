@@ -11,6 +11,39 @@ export function Notes(){
 
     const [userNotes, setUserNotes] = useState([])
 
+    async function readNote(){
+        await fetch(`${note_auth.read}/${user}`, {
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                // console.log(data)
+                setUserNotes(data)
+            })
+            .catch((err) => console.log(err))
+    }
+
+    async function deleteNote(user: any, id: any){
+        // console.log(user)
+        // console.log(id)
+
+        await fetch(`${note_auth.delete}/${user}_${id}`, {
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data)
+                readNote()
+            })
+            .catch((err) => console.log(err))
+    }
+
     // =================================================
     useEffect(() => {
         fetch(`${note_auth.read}/${user}`, {
@@ -57,6 +90,8 @@ export function Notes(){
                                 </Link>
                                 <button
                                     className={`${styles.button_opc} ${styles.delete}`}
+                                    key={array_note[0]}
+                                    onClick={() => deleteNote(user, array_note[0])}
                                 >
                                     Delete
                                 </button>
