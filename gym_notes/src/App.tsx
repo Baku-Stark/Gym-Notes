@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import { useState, useEffect } from "react"
+import { useRef } from "react"
 import { useNavigate } from 'react-router-dom'
 
 // IMPORT [ROUTES]
@@ -13,15 +13,19 @@ import { Footer } from './components/Footer'
 // IMPORT [LOGIN]
 import { auth_link } from './components/pages/account/Auth'
 
-import styles from './assets/css/output.module.css'
-
 
 function App(){
   const navigate = useNavigate()
 
+  const registerRef = useRef<HTMLInputElement>(null)
+  const con_registerRef = useRef<HTMLInputElement>(null)
+
   const [isLogged, setIsLogged] = useState(false)
 
   const [account, setAccount] = useState({})
+  const [user, setUser] = useState({
+    "user": ""
+  })
   
   const [login, setLogin] = useState(
     {"user": "", "password": ""}
@@ -46,8 +50,9 @@ function App(){
       })
         .then((resp) => resp.json())
         .then((data) => {
-          setAccount(data)
           localStorage.setItem("token", data['token'])
+          setAccount(data)
+          setUser(data['user'])
           setIsLogged(true)
           navigate('/home/')
         })
@@ -78,11 +83,11 @@ function App(){
       e.preventDefault()
 
       if(register.password == register.con_password){
-          document.querySelector(`.${styles.password}`)!.style.border = 'none'
-          document.querySelector(`.${styles.password}`)!.placeholder = "Type your password"
+          registerRef.current!.style.border = 'none'
+          con_registerRef.current!.placeholder = "Type your password"
 
-          document.querySelector("#con_password")!.style.border = 'none'
-          document.querySelector("#con_password")!.placeholder = "Confirm your password"
+          registerRef.current!.style.border = 'none'
+          con_registerRef.current!.placeholder = "Confirm your password"
           
           await fetch(auth_link.register_auth, {
             method:'POST',
@@ -100,11 +105,11 @@ function App(){
       }
 
       else{
-        document.querySelector(`.${styles.password}`)!.style.border = '2px solid red'
-        document.querySelector(`.${styles.password}`)!.placeholder = "Different passwords"
+        registerRef.current!.style.border = '2px solid red'
+        registerRef.current!.placeholder = "Different passwords"
 
-        document.querySelector("#con_password")!.style.border = '2px solid red'
-        document.querySelector("#con_password")!.placeholder = "Different passwords"
+        con_registerRef.current!.style.border = '2px solid red'
+        con_registerRef.current!.placeholder = "Different passwords"
 
         // clean input's values
         e.target.reset()
@@ -142,7 +147,7 @@ function App(){
     <>
       {isLogged ? (
         <>
-          <Navbar user={account['user']} logout={logout}/>
+          <Navbar user={user['user']} logout={logout}/>
           <ContainerRoutes account={account}/>
           <Footer />
         </>

@@ -8,14 +8,14 @@ import personal from '../assets/img/personal_trainer.svg'
 import styles from '../assets/css/output.module.css'
 
 export function Navbar({user, logout}:any){
-    const sidebar = useRef()
+    const sidebar = useRef<HTMLDivElement>(null)
 
     function closeSideBar(){
-        sidebar.current.classList.remove(`${styles.active}`)
+        sidebar.current?.classList.remove(`${styles.active}`)
     }
 
     function openSideBar(){
-        sidebar.current.classList.add(`${styles.active}`)
+        sidebar.current?.classList.add(`${styles.active}`)
     }
 
     return(

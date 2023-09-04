@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet-async"
 import styles from '../../../assets/css/output.module.css'
 
 export function SignUp({
+    registerRef,
+    con_registerRef,
     handleChangeRegister,
     register_authentic
 }:any){
@@ -47,6 +49,7 @@ export function SignUp({
                                         placeholder="Type your password"
                                         className={styles.password}
                                         onChange={handleChangeRegister}
+                                        ref={registerRef}
                                         required
                                     />
                                 </div>
@@ -59,6 +62,7 @@ export function SignUp({
                                         placeholder="Confirm your password"
                                         className={styles.password}
                                         onChange={handleChangeRegister}
+                                        ref={con_registerRef}
                                         required
                                     />
                                 </div>
